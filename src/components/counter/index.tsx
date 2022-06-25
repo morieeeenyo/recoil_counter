@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import {counterAtom, counterSelector } from '../../atoms/count/'
 
-const Counter: FC = memo(() => {
+export const Counter: FC = memo(() => {
   const countValue = useRecoilValue(counterAtom) //グローバル変数を直接取得
   const [count, setCount] = useRecoilState(counterAtom) // グローバル変数を他の変数に代入し取得
   const [counter, setCounter] = useRecoilState(counterSelector) // グローバル変数のSelector経由で取得
@@ -39,5 +39,3 @@ const Counter: FC = memo(() => {
     </>
   )
 })
-
-export default Counter
