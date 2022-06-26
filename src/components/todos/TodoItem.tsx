@@ -11,10 +11,10 @@ export const TodoItem = ({ item }: Props) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
   const index = todoList.findIndex((listItem) => listItem === item);
 
-  const editItemText = (e: React.ChangeEvent<{value: string}>) => {
+  const editItemText = (e: React.ChangeEvent<{ value: string }>) => {
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
-      text: e.target.value,
+      title: e.target.value,
     });
 
     setTodoList(newList);
@@ -23,7 +23,7 @@ export const TodoItem = ({ item }: Props) => {
   const toggleItemCompletion = () => {
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
-      isComplete: !item.isComplete,
+      completed: !item.completed,
     });
 
     setTodoList(newList);
@@ -35,7 +35,11 @@ export const TodoItem = ({ item }: Props) => {
     setTodoList(newList);
   };
 
-  function replaceItemAtIndex(arr: TodoType[], index: number, newValue: TodoType) {
+  function replaceItemAtIndex(
+    arr: TodoType[],
+    index: number,
+    newValue: TodoType
+  ) {
     return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
   }
 
@@ -45,10 +49,10 @@ export const TodoItem = ({ item }: Props) => {
 
   return (
     <div>
-      <input type="text" value={item.text} onChange={editItemText} />
+      <input type="text" value={item.title} onChange={editItemText} />
       <input
         type="checkbox"
-        checked={item.isComplete}
+        checked={item.completed}
         onChange={toggleItemCompletion}
       />
       <button onClick={deleteItem}>X</button>

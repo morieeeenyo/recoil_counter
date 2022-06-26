@@ -11,8 +11,8 @@ export const TodoItemCreator = () => {
       ...oldTodoList,
       {
         id: getId(),
-        text: inputValue,
-        isComplete: false,
+        title: inputValue,
+        completed: false,
       },
     ]);
     setInputValue('');

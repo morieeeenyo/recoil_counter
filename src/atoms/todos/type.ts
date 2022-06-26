@@ -1,7 +1,7 @@
 export type TodoType = {
   id: number;
-  text: string;
-  isComplete: boolean
+  title: string;
+  completed: boolean
 };
 
 export type TodoListFilterType = 'Show All' | 'Show Completed' | 'Show Uncompleted'
