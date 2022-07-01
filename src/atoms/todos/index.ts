@@ -26,7 +26,7 @@ export const filteredTodoListState = selector<TodoType[]>({
   key: "FilteredTodoList",
   get: ({ get }) => {
     const filter = get(todoListFilterState);
-    const list = get(fetchTodoList);
+    const list = get(todoListState);
 
     switch (filter) {
       case "Show Completed":
@@ -42,7 +42,7 @@ export const filteredTodoListState = selector<TodoType[]>({
 export const todoListStatsState = selector<TodoListStatsType>({
   key: "TodoListStats",
   get: ({ get }) => {
-    const todoList = get(fetchTodoList);
+    const todoList = get(todoListState);
     const totalNum = todoList.length;
     const totalCompletedNum = todoList.filter((item) => item.completed).length;
     const totalUncompletedNum = totalNum - totalCompletedNum;
